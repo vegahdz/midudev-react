@@ -17,7 +17,8 @@ function App() {
 
   useEffect( () => {
     console.log ('Efecto ejecutado');
-  })
+    setGifs(DIFERENT_GIFS);
+  }, [])
 
   return (
     <div className="App">
@@ -25,7 +26,7 @@ function App() {
         {
           gifs.map(singleGif => <img src={singleGif} alt='panda' />)
         }
-        <button onClick={() => setGifs(DIFERENT_GIFS)}>Cambiar gifs</button>
+        {/* <button onClick={() => setGifs(DIFERENT_GIFS)}>Cambiar gifs</button> */}
       </section>
     </div>
   );
