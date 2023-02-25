@@ -2,29 +2,29 @@
 
 import './App.css';
 import {useEffect, useState} from 'react';
+import getGifs from './services/getGifs';
+import Gif from './components/Gif';
 
-const GIFS = [
-  'https://media3.giphy.com/media/pO1H8mAU7geAw/giphy.gif?cid=ecf05e47xmol8pau9coz9uulqf65515axxfqzkyhcy15licg&rid=giphy.gif&ct=g',
-  'https://media1.giphy.com/media/EPcvhM28ER9XW/giphy.gif?cid=ecf05e47b7hd1jgns5yif6s6orirkf2voa2qx1jtwhogvr1r&rid=giphy.gif&ct=g'
-]
-
-const DIFERENT_GIFS = [
-  'https://media1.giphy.com/media/5hrj42zCA1RoA/giphy.gif?cid=ecf05e47w74f82ttmwbyeqx3bkbzmq9ewdh3cu3sg11hpd16&rid=giphy.gif&ct=g'
-
-]
 function App() {
-  const [gifs, setGifs] = useState(GIFS)
+  const [gifs, setGifs] = useState([])
 
   useEffect( () => {
-    console.log ('Efecto ejecutado');
-    setGifs(DIFERENT_GIFS);
+    // console.log ('Efecto ejecutado');
+    getGifs({keyword: 'programming'}).then(gifs => setGifs(gifs));
   }, [])
 
   return (
     <div className="App">
       <section className="App-content">
         {
-          gifs.map(singleGif => <img src={singleGif} alt='panda' />)
+          gifs.map(singleGif =>
+            <Gif
+              key={singleGif.id}
+              title={singleGif.title}
+              id={singleGif.id}
+              url={singleGif.url}
+            />
+         )
         }
         {/* <button onClick={() => setGifs(DIFERENT_GIFS)}>Cambiar gifs</button> */}
       </section>
