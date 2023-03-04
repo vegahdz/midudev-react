@@ -1,0 +1,22 @@
+
+.Gif{
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    text-decoration: underline;
+    width: 100%;
+}
+
+.Gif img{
+    object-fit: contain;
+}
+
+a{
+    color: #09f;
+    font-size: 32px;
+}
